@@ -8,7 +8,7 @@ then
 
     		wget -q -O- $url | iconv -f cp1251 -t utf8>tmp.txt>> tmp.txt
 	#awk '/Температура/ {print}' tmp.txt 
-	echo `cat ./tmp.txt | grep -A 1 "погода фактическая"`
+	echo `cat ./tmp.txt | grep -A 1 "погода фактическая"| sed 's/<br>/\n/g'|sed 's/<[^>]*>/ /g'`
     	sleep $i
 	rm tmp.txt
 else
