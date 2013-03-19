@@ -1,6 +1,11 @@
 #!/bin/bash
 i=$(< config.ini)
 url="pda.pogoda.by";
+if [[ $1 == "--help" || $1 == "-h" ]];
+then
+echo I print weather every $i seconds.
+exit 0
+fi
 ping -q -c1 $url | grep recieved | awk '{print $1}'
 if  [ $? -eq 0 ]
 then
