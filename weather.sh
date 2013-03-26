@@ -11,8 +11,7 @@ fi
 url="pda.pogoda.by";
 
 
-ping -q -c1 $url | grep recieved | awk '{print $1}'
-if  [ $? -eq 0 ]
+if ping -c1 $url >/dev/null
 then
 	while true  
 	do  	
